@@ -1,6 +1,6 @@
 <p align="left"> <img title="Alfresco" src="alfresco.png" alt="Alfresco - Simply a better way to create amazing digital experiences"></p>
 
-# Alfresco Content Application
+# Alfresco Content Appl
 
 Please refer to the [Public documentation](https://alfresco-content-app.netlify.com/) for more details
 
