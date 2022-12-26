@@ -1,0 +1,129 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+.building-folder-info {
+  display: flex;
+ background-color: white;
+  border: 1px solid rgb(240, 240, 240);
+ width:98%;
+ gap: 100px;
+margin-left: auto;
+margin-right: auto;
+border-radius: 0.25rem;
+  //margin:25px auto ;
+}
+.details-list {
+  list-style: none;
+  color:#76323f;
+  font-weight: 500;
+}
+
+.building-details {
+  align-self: flex-start;
+  color:#76323f;
+  margin-top: 20px;
+  
+}
+.building-details li:first-child {
+  align-self: center;
+  color:#76323f;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-bottom: 1px solid #76323f;
+  width: 1050px;
+}
+.building-details li {
+ 
+  color:#76323f;
+  
+}
+
+.building-details li span{
+ 
+  color:rgb(101, 101, 101);
+  
+}
+
+.building-docs {
+  display: flex;
+  gap: 5px;
+ align-content: center;
+ 
+}
+.pres-plans {
+  background-color: white;
+  border: 1px solid rgb(240, 240, 240);
+ width:25%;
+ margin-bottom: 200px;
+ border-radius: 0.25rem;
+ margin-left: 15px;
+}
+.building-images {
+  background-color: white;
+  border: 1px solid rgb(240, 240, 240);
+ width:24%;
+ border-radius: 0.25rem;
+ margin-bottom: 200px;
+}
+.supporting-docs {
+  background-color: white;
+  border: 1px solid rgb(240, 240, 240);
+ width:24%;
+ border-radius: 0.25rem;
+ margin-bottom: 200px;
+}
+.zone-plans {
+  background-color: white;
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 0.25rem;
+  width:24%;
+  
+ //padding-right: 365px;
+ margin-bottom: 200px;
+}
+p {
+  color: black;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.building-docs p {
+  margin: 30px;
+}
+.docs {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+.breadcrumb {
+  margin: 20px;
+}
+.building-details li {
+  margin-top: 5px;
+}
+.bpps {
+  color: green;
+  background-color: black;
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+}
+.classic-view {
+  margin-left: auto;
+  
+}
+.back-btn {
+  margin-left: auto;
+  margin-right: 50px;
+  cursor: pointer;
+}
+.building-details li .address {
+  color: black !important;
+  font-size: 1rem !important;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}

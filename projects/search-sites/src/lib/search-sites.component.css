@@ -1,0 +1,62 @@
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+th,
+td {
+  overflow: hidden;
+  width: 100%;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.overlay {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.286);
+  z-index: 10;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+.mat-paginator-sticky {
+  bottom: 0px;
+  position: sticky;
+  z-index: 10;
+}
+
+.search-sites {
+  background-color: white;
+}
+
+.search-sites-form {
+  background-color: white;
+  margin-top: 20px;
+}
+
+.search-dropdown {
+  padding-top: 20px;
+}
+
+.search-button {
+  padding-top: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.mat-header-row {
+  background: rgba(211, 211, 211);
+}
+
+.mat-header-cell {
+  font-size: 16px;
+}

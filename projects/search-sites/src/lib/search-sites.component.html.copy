@@ -1,0 +1,36 @@
+<mat-grid-list cols="4" rowHeight="75px">
+    <mat-grid-tile>
+        <adf-sites-dropdown (change)="onSiteSelect($event)">
+        </adf-sites-dropdown>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field appearance="fill">
+            <mat-label>Content Types</mat-label>
+            <mat-select [formControl]="contentTypes" multiple (selectionChange)="contentTypeSelected($event)">
+                <mat-option *ngFor="let type of dropdownList" [value]="type">{{type}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field appearance="fill">
+            <mat-label>Properties</mat-label>
+            <mat-select [formControl]="contentTypes" multiple (selectionChange)="propertySelected($event)">
+                <mat-option *ngFor="let property of propertyList" [value]="property">{{property}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-raised-button color="primary" (click)="onSubmit($event)">Submit</button>
+    </mat-grid-tile>
+</mat-grid-list>
+<div></div>
+<div style="height: 100%; overflow-y: scroll;" *ngIf="datatableRows.length>0 && datatableSchema.length>0">
+    <adf-pagination [pagination]="pagination" (nextPage)="onNextPage($event)" (prevPage)="onPreviousPage($event)"
+        (changePageSize)="onChangePageSize($event)" (changePageNumber)="onChangePageNumber($event)">
+    </adf-pagination>
+    <!-- <button mat-raised-button color="primary" (click)="exportTable()">
+        Export
+      </button> -->
+        <adf-datatable style="height: 100%; overflow-y: scroll;" [data]="datatableData">
+        </adf-datatable>   
+</div>

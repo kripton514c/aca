@@ -1,0 +1,33 @@
+
+<div class="select-toolbar">
+     <div class="type-selector-btn"><mat-form-field class="settings-input" appearance="outline">
+        <mat-label>Select Content Type</mat-label>
+        <mat-select [(value)]="selected" (selectionChange)="selectContentType()">
+        <mat-option *ngFor="let type of types" [value]="type.id">
+        {{type.title}}
+      </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> <div class="download-btn" *ngIf="results.length>0"><mat-icon role="img" (click)="onDownload()" class="mat-icon notranslate material-icons mat-icon-no-color ng-star-inserted" aria-hidden="true" data-mat-icon-type="font" title="Download Type Data">get_app</mat-icon></div>
+    </div><div class="container">
+<adf-datatable [data]="data">
+<data-columns>
+    
+    <data-column key="id" title="Name"></data-column>
+    <data-column key="title" title="Title"></data-column>
+    <data-column key="dataType" title="Data Type" class="full-width name-column"></data-column>
+    <data-column key="isMandatory" title="Mandatory"></data-column>
+    <data-column key="isMultiValued" title="Multi Valued"></data-column>
+    
+</data-columns>
+</adf-datatable>  
+<adf-pagination
+ 
+  [pagination]="pagination"
+  [supportedPageSizes]="[5, 10]"
+  (changePageNumber)="onChangePageNumber($event)"
+  (changePageSize)="onChangePageSize($event)"
+  (nextPage)="onNextPage($event)"
+  (prevPage)="onPrevPage($event)">
+</adf-pagination>
+</div>

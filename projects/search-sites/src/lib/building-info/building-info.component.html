@@ -1,0 +1,142 @@
+<div style="max-height:100%; overflow-y: auto; white-space: nowrap"
+data-infinite-direction="y">
+<div class="toolbar">
+<div class="breadcrumb"><p>{{breadcrumbPath}}</p></div>
+<div class="classic-view"><button mat-button (click)='launchHbdrClassicView()' class="mat-focus-indicator content__reset-action mat-button mat-button-base">Launch HBDR Classic</button></div>
+<div class="back-btn"><i (click)='goBack()' title="Return to Results" class="material-icons tooltip">arrow_back</i></div>
+</div>
+<div class="building-folder-info">
+  <div class="building-img"><mat-icon svgIcon="folder" style="width: 350px; height:350px; font-size: 42px"></mat-icon></div>
+  
+  <div class="building-details">
+  <ul class="details-list"><!-- <li><aca-search-results-row [context]="context"></aca-search-results-row></li>-->
+    <li>{{node?.name}}</li>
+    <li><span>{{node?.properties && node?.properties['edms:streetaddress']}}<span *ngIf="node?.properties && node?.properties['edms:streetaddress']">jj,</span> {{node?.properties && node?.properties['edms:city']}}<span *ngIf="node?.properties && node?.properties['edms:city']">,</span><br>{{node?.properties && node?.properties['edms:zipcode']}} {{node?.properties && node?.properties['edms:state']}}</span> </li>
+    
+                    <li>Year Constructed: <span>{{node?.properties && node?.properties['edms:constructioncompletedate']}}</span></li>
+                      <li>Historical Status: <span>{{node?.properties && node?.properties['edms:historicstatus']}}</span></li>
+                        <li>Architectural Style: <span>{{node?.properties && node?.properties['edms:buildingstyle']}}</span></li>
+                          <li>Architect: <span>{{node?.properties && node?.properties['edms:architect']}}</span></li>
+                          
+  </ul>
+</div>
+</div>
+<div class="docs">
+  <p>Building Documents</p>
+  
+</div>
+<div class="building-docs">
+<div class="pres-plans">
+  <p>Building Preservation Plans</p>
+<div style="max-height: 350px; overflow-y: auto;"
+data-infinite-direction="y">  <adf-document-list 
+    #documentList
+    [currentFolderId]="bppsId"
+    
+    (preview)="showPreview($event)">
+    <data-columns>
+      <!--<data-column key="$thumbnail" type="text">
+        <ng-template let-context>
+         
+         <aca-custom-thumbnail-column [context]="context"></aca-custom-thumbnail-column>
+            
+        </ng-template>
+    </data-column>-->
+      <data-column key="name" title=""></data-column>
+    
+    </data-columns>
+    <adf-custom-empty-content-template>
+      <h2>This folder is empty</h2>
+  </adf-custom-empty-content-template>
+</adf-document-list>
+<adf-viewer [allowFullScreen]="true"
+[(showViewer)]="showViewer"
+[overlayMode]="true"
+[nodeId]="id">
+</adf-viewer>
+</div>
+</div>
+<div class="building-images"><p>Images</p>
+  <div style="max-height: 350px; overflow-y: auto;"
+data-infinite-direction="y">  <adf-document-list 
+    #documentList
+    [currentFolderId]="imgsId"
+    (preview)="showPreview($event)">
+    <data-columns>
+      <data-column key="$thumbnail" type="text" [sr-title]="'ADF-DOCUMENT-LIST.LAYOUT.THUMBNAIL'" [sortable]="false">
+        <ng-template let-context>
+         
+         <aca-custom-thumbnail-column [context]="context"></aca-custom-thumbnail-column>
+            
+        </ng-template>
+    </data-column>
+    <!--  <data-column key="name" title=""></data-column>-->
+    </data-columns>
+    <adf-custom-empty-content-template>
+      <h2>This folder is empty</h2>
+  </adf-custom-empty-content-template>
+</adf-document-list>
+<adf-viewer [allowFullScreen]="true"
+[(showViewer)]="showViewer"
+[overlayMode]="true"
+[nodeId]="id">
+</adf-viewer>
+</div>
+</div>
+<div class="supporting-docs"><p>Supporting Documents</p>
+  <div style="max-height: 350px; overflow-y: auto;"
+  data-infinite-direction="y">  <adf-document-list 
+      #documentList
+      [currentFolderId]="supportingDocsId"
+      (preview)="showPreview($event)">
+
+      <data-columns>
+        <!--<data-column key="$thumbnail" type="text" [sr-title]="'ADF-DOCUMENT-LIST.LAYOUT.THUMBNAIL'" [sortable]="false">
+          <ng-template let-context>
+           
+           <aca-custom-thumbnail-column [context]="context"></aca-custom-thumbnail-column>
+              
+          </ng-template>
+      </data-column>-->
+        <data-column key="name" title=""></data-column>
+      </data-columns>
+      <adf-custom-empty-content-template>
+        <h2>This folder is empty</h2>
+    </adf-custom-empty-content-template>
+  </adf-document-list>
+  <adf-viewer
+    [(showViewer)]="showViewer"
+    [overlayMode]="true"
+    [nodeId]="id">
+</adf-viewer>
+  </div>
+</div>
+<div class="zone-plans"><p>Zone Plans</p>
+  <div style="max-height: 350px; overflow-y: auto;"
+data-infinite-direction="y">  <adf-document-list 
+    #documentList
+    [currentFolderId]="zonePlansId"
+    (preview)="showPreview($event)">
+    <data-columns>
+     <!-- <data-column key="$thumbnail" type="text" [sr-title]="'ADF-DOCUMENT-LIST.LAYOUT.THUMBNAIL'" [sortable]="false">
+        <ng-template let-context>
+         
+         <aca-custom-thumbnail-column [context]="context"></aca-custom-thumbnail-column>
+            
+        </ng-template>
+    </data-column>-->
+      <data-column key="name" title=""></data-column>
+    </data-columns>
+    <adf-custom-empty-content-template>
+      <h2>This folder is empty</h2>
+  </adf-custom-empty-content-template>
+</adf-document-list>
+<adf-viewer [allowFullScreen]="true"
+[(showViewer)]="showViewer"
+[overlayMode]="true"
+[nodeId]="id">
+</adf-viewer>
+</div>
+</div>
+</div>
+</div>
