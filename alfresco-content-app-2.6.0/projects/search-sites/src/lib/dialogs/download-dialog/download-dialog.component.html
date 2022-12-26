@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Options</h1>
+<div mat-dialog-content style="height: 200px">
+  <mat-label>File Format</mat-label>
+  <mat-select placeholder="Format" [(value)]="downloadType" (selectionChange)="setDownloadType($event)">
+    <mat-option *ngFor="let type of data" [value]="type.value">{{ type.type }}</mat-option>
+  </mat-select>
+  <section style="margin-top: 10px" class="download-all">
+    <mat-checkbox class="download-checkbox" (change)="onChangeAllPage($event)" [checked]="allPages">All Pages </mat-checkbox>
+  </section>
+  <section style="margin-top: 10px">
+  <mat-label>Download Location</mat-label>
+  <mat-radio-group style="margin-top: 10px" class="download-location" [(ngModel)]="downloadLocation">
+    <mat-radio-button class="download-option" value="local"> Local </mat-radio-button>
+    <mat-radio-button class="download-option" value="alfresco"> Alfresco </mat-radio-button>
+  </mat-radio-group>
+</section>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" mat-dialog-close (click)="doAction()">Download</button>
+</div>

@@ -1,0 +1,243 @@
+{
+    "$schema": "../../../extension.schema.json",
+    "$id": "search-sites",
+    "$version": "1.0.0",
+    "$vendor": "",
+    "$name": "plugin1",
+    "$description": "demo plugin",
+    "$license": "MIT",
+    "routes": [ 
+      {
+        "id": "search.sites.route",
+        "path": "search/sites",
+        "component": "search-sites.main.component"
+      },
+      {
+        "id": "hbdr-search.route",
+        "path": "hbdr/search",
+        "component": "hbdr-search.main.component"
+      },
+      {
+        "id": "edms.model.route",
+        "path": "edms/model",
+        "component": "edms-model.main.component"
+      },
+      {
+        "id": "edms.building-info.route",
+        "path": "edms/building-info",
+        "component": "edms-building-info.main.component"
+      }
+   
+  ],
+    "features": { 
+      "navbar": [
+        {
+          "id": "search.sites.nav",
+          "items": [
+            {
+              "id": "hbdr-search.main",
+              "icon": "search",
+              "title": "HBDR Search",
+              "route": "hbdr-search.route"
+          },
+            {
+              "id": "my.extension.main",
+              "icon": "search",
+              "title": "Search Sites",
+              "route": "search.sites.route"
+          } ,
+          {
+            "id": "edms.model.main",
+            "icon": "extension",
+            "title": "EDMS Content Model",
+            "route": "edms.model.route"
+          }
+        ]
+      }
+    ],
+    "search": [
+     
+    {
+      "id": "app.search.custom_search",
+      "order": 50,
+      "name":"HBDR 2.0",
+      "filterWithContains": true,
+      "default": false,
+      "aca:fields": [ "cm:name", "cm:title", "edms:buildingname","edms:city","edms:architect","edms:buildingstyle", "TEXT", "TAG"],
+      "include": ["path", "allowableOperations", "properties"],
+      "resetButton": true,
+      "sorting": {
+        "options": [
+          {
+            "key": "score",
+            "label": "SEARCH.SORT.RELEVANCE",
+            "type": "SCORE",
+            "field": "score",
+            "ascending": false
+          },
+          {
+            "key": "name",
+            "label": "SEARCH.SORT.FILENAME",
+            "type": "FIELD",
+            "field": "cm:name",
+            "ascending": true
+          },
+          {
+            "key": "title",
+            "label": "SEARCH.SORT.TITLE",
+            "type": "FIELD",
+            "field": "cm:title",
+            "ascending": true
+          },
+          {
+            "key": "modified",
+            "label": "SEARCH.SORT.MODIFIED_DATE",
+            "type": "FIELD",
+            "field": "cm:modified",
+            "ascending": true
+          },
+          {
+            "key": "modifier",
+            "label": "SEARCH.SORT.MODIFIER",
+            "type": "FIELD",
+            "field": "cm:modifier",
+            "ascending": true
+          },
+          {
+            "key": "created",
+            "label": "SEARCH.SORT.CREATE_DATE",
+            "type": "FIELD",
+            "field": "cm:created",
+            "ascending": true
+          },
+          {
+            "key": "content.sizeInBytes",
+            "label": "SEARCH.SORT.SIZE",
+            "type": "FIELD",
+            "field": "content.size",
+            "ascending": true
+          },
+          {
+            "key": "content.mimetype",
+            "label": "SEARCH.SORT.TYPE",
+            "type": "FIELD",
+            "field": "content.mimetype",
+            "ascending": true
+          }
+        ],
+        "defaults": [
+          {
+            "key": "score",
+            "type": "SCORE",
+            "field": "score",
+            "ascending": false
+          }
+        ]
+      },
+      "filterQueries": [
+        { "query": "+PATH:'/app:company_home/st:sites/cm:hbdr/cm:documentLibrary//*' AND NOT +PATH:'/app:company_home/st:sites/cm:hbdr/cm:documentLibrary/cm:Building_x0020_Preservation_x0020_Plans_x0020_-_x0020_ARCHIVED//*' AND (+TYPE:'edms:bppbuildingfolder' OR +TYPE:'edms:bppdocuments' OR +TYPE:'edms:bppimages' OR +TYPE:'edms:bppsupportingdocuments' OR +TYPE:'edms:bppzoneplans')" },
+        {
+          "query": "-TYPE:'cm:thumbnail' AND -TYPE:'cm:failedThumbnail' AND -TYPE:'cm:rating'"
+        },
+        { "query": "-cm:creator:System AND -QNAME:comment" },
+        {
+          "query": "-TYPE:'st:site' AND -ASPECT:'st:siteContainer' AND -ASPECT:'sys:hidden'"
+        },
+        {
+          "query": "-TYPE:'dl:dataList' AND -TYPE:'dl:todoList' AND -TYPE:'dl:issue'"
+        },
+        { "query": "-TYPE:'fm:topic' AND -TYPE:'fm:post'" },
+        { "query": "-TYPE:'lnk:link'" },
+        { "query": "-PNAME:'0/wiki'" }
+      ],
+      "facetFields": {
+        "expanded": true,
+        "fields": [
+          
+          {
+            "mincount": 1,
+            "field": "edms:pbsregion",
+            "label": "Region",
+            "settings": {
+              "allowUpdateOnChange": true,
+              "hideDefaultAction": false
+            }
+          },
+          {
+            "mincount": 1,
+            "field": "edms:state",
+            "label": "State",
+            "settings": {
+              "allowUpdateOnChange": true,
+              "hideDefaultAction": false
+            }
+          },
+          {
+            "mincount": 1,
+            "field": "edms:city",
+            "label": "City",
+            "settings": {
+              "allowUpdateOnChange": true,
+              "hideDefaultAction": false
+            }
+          },
+          {
+            "mincount": 1,
+            "field": "edms:historicstatus",
+            "label": "Historical Status",
+            "settings": {
+              "allowUpdateOnChange": true,
+              "hideDefaultAction": false
+            }
+          }
+                  
+          
+        ]
+      },
+      "facetQueries": {
+        "label": "BPP Document Types",
+        "pageSize": 4,
+        "queries": [
+            { "query": "+TYPE:'edms:bppdocuments'", "label": "BPP Images" },
+            { "query": "+TYPE:'edms:bppimages'", "label": "BPP Documents" },
+            { "query": "+TYPE:'edms:bppzoneplans'", "label": "BPP Zone Plans" },
+            { "query": "+TYPE:'edms:bppsupportingdocuments'", "label": "BPP Supporting Documents" }
+            
+        ]
+    },
+      "categories": [
+        
+        {
+          "id": "constructiondate",
+          "name": "Construction Date",
+          "enabled": true,
+          "component": {
+            "selector": "number-range",
+            "settings": {
+              "allowUpdateOnChange": true,
+              "hideDefaultAction": true,
+              "field": "edms:constructionstartdate",
+              "format": "[{FROM} TO {TO}]"
+              
+            }
+          }
+        }
+      ]       
+    }
+  ],
+  "toolbar": [
+      {
+        "id": "app.toolbar.shared",
+        "type": "custom",
+        "order": 150,
+        "data": {
+          "iconButton": true
+        },
+        "component": "edms-extension.main.component",
+        "rules": {
+          "visible": "canToggleSharedLink"
+        }
+      }
+  ]
+}
+}
